@@ -4,6 +4,6 @@ namespace TextAdventure.Core.Services
 {
     public interface ICommandService
     {
-        Task<CommandResult> ExecuteCommand(Command command);
+        Task<Command> ExecuteCommand(Command command);
     }
 }

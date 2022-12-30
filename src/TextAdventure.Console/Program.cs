@@ -13,7 +13,9 @@ static async Task GameLoop()
     var commandService = services.GetRequiredService<ICommandService>();
     //PrintInConsole(idac.InicializarAventura());
     bool repeat = true;
-    var command = new Command("", "", new Adventure());
+    var command = new Command("start", "", new Adventure());
+    command = await commandService.ExecuteCommand(command);
+    PrintInConsole(command.TextOutput);
     do
     {
         var input = Console.ReadLine();
@@ -29,8 +31,8 @@ static async Task GameLoop()
         else
         {
             command.TextInput= input;
-            var commandResult = await commandService.ExecuteCommand(command);
-            PrintInConsole(commandResult.TextOutput);
+            command = await commandService.ExecuteCommand(command);
+            PrintInConsole(command.TextOutput);
         }
     } while (repeat);
 }
