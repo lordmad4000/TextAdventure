@@ -2,16 +2,16 @@
 {
     public class Exit
     {
-
-        public Exit(int id, string name, string description)
+        public Exit(Directions direction, int roomId, string roomName)
         {
-            Id = id;
-            Name = name;
-            Description = description;
+            Direction = direction;
+            RoomId = roomId;
+            RoomName = roomName;
         }
 
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public Directions Direction { get; set; }
+        public int RoomId { get; set; }
+        public string RoomName { get; set; }
+
     }
 }
