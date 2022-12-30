@@ -9,6 +9,7 @@ namespace TextAdventure.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddScoped<IAdventureRepository, AdventureRepository>();
+            services.AddScoped<IRoomRepository, RoomRepository>();
 
             return services;
         }
