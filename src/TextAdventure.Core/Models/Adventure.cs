@@ -7,7 +7,7 @@
             Id = 0;
             Name = "";
             Description = "";
-            ActualRoom = new Room(0, "", "");
+            ActualRoom = new Room(0, "", "", new List<Exit>());
             Items = new List<Item>();
             Characters = new List<Character>();
             Exits = new List<Exit>();
