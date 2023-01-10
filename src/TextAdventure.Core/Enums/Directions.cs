@@ -7,5 +7,9 @@ public enum Directions
 	Southeast,
 	Southwest,
 	East,
-	West
+	West,
+	Up,
+	Down,
+	Inside,
+	Outside
 }
