@@ -45,6 +45,7 @@ namespace TextAdventure.Application.Adventures.Queries.Start
             {
                 adventure.AddItem(item);
             }
+            adventure.OutputText = adventure.ActualRoom.Description;
 
             return _mapper.Map<AdventureDto>(adventure);
         }

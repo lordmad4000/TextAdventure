@@ -22,6 +22,7 @@ namespace TextAdventure.Application.Adventures.Queries.ExecuteCommand
 
         public async Task<ExecuteCommandResult> Handle(ExecuteCommandQuery request, CancellationToken cancellationToken)
         {
+            request.AdventureDto.OutputText = "";
             var textAdventureAction = _parserService.ParseTextInputCommand(request.TextCommand);
             var adventure = textAdventureAction.Execute(_mapper.Map<Adventure>(request.AdventureDto));
             await TryLoadRoom(adventure);

@@ -51,7 +51,7 @@ namespace TextAdventure
         private async Task<ExecuteCommandResult> StartAdventure()
         {
             var adventureDto = await _mediator.Send(new StartAdventureQuery(0));
-            return new ExecuteCommandResult("", "", adventureDto);
+            return new ExecuteCommandResult("", adventureDto.OutputText, adventureDto);
         }
 
         private async Task<ExecuteCommandResult> ExecuteCommand(string input, AdventureDto adventureDto)
