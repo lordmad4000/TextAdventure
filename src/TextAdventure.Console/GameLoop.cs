@@ -1,24 +1,26 @@
-﻿using System.Text.RegularExpressions;
-using TextAdventure.Core.Models;
-using TextAdventure.Core.Services;
+﻿using MediatR;
+using System.Text.RegularExpressions;
+using TextAdventure.Application.Adventures.Dtos;
+using TextAdventure.Application.Adventures.Queries.ExecuteCommand;
+using TextAdventure.Application.Adventures.Queries.Start;
 
 namespace TextAdventure
 {
     public class GameLoop
     {
-        private readonly ICommandService _commandService;
+        private readonly IMediator _mediator;
 
-        public GameLoop(ICommandService commandService)
+        public GameLoop(IMediator mediator)
         {
-            _commandService = commandService;
+            _mediator = mediator;
         }
-        
+
         public async Task Run()
         {
             bool repeat = true;
 
-            var resultCommand = await StartAdventure();
-            PrintInConsole(resultCommand.TextOutput);
+            var executeCommandResult = await StartAdventure();
+            PrintInConsole(executeCommandResult.TextOutput);
             do
             {
                 var input = Console.ReadLine();
@@ -33,8 +35,8 @@ namespace TextAdventure
                 }
                 else
                 {
-                    resultCommand = await ExecuteCommand(input, resultCommand.Adventure);
-                    PrintInConsole(resultCommand.TextOutput);
+                    executeCommandResult = await ExecuteCommand(input, executeCommandResult.AdventureDto);
+                    PrintInConsole(executeCommandResult.TextOutput);
                 }
             } while (repeat);
         }
@@ -46,14 +48,17 @@ namespace TextAdventure
             Console.WriteLine(text);
         }
 
-        private async Task<ResultCommand> StartAdventure()
+        private async Task<ExecuteCommandResult> StartAdventure()
         {
-            return await _commandService.ExecuteCommand(new Command("start", "", new Adventure()));
+            var adventureDto = await _mediator.Send(new StartAdventureQuery(0));
+            return new ExecuteCommandResult("", "", adventureDto);
         }
 
-        private async Task<ResultCommand> ExecuteCommand(string input, Adventure adventure)
+        private async Task<ExecuteCommandResult> ExecuteCommand(string input, AdventureDto adventureDto)
         {
-            return await _commandService.ExecuteCommand(new Command(input, "", adventure));
+            var executeCommandQuery = new ExecuteCommandQuery(input, "", adventureDto);
+            return await _mediator.Send(executeCommandQuery);
+            //return await _commandService.ExecuteCommand(new ExecuteCommandQuery(input, "", adventure));
         }
 
     }

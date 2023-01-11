@@ -2,7 +2,6 @@
 using TextAdventure;
 using TextAdventure.Application;
 using TextAdventure.Application.Configuration.AutoMapper;
-using TextAdventure.Core;
 using TextAdventure.Infrastructure;
 
 public class Program
@@ -10,7 +9,7 @@ public class Program
     static async Task Main(string[] args)
     {
         var services = RegisterServices();
-        var gameLoop= services.GetRequiredService<GameLoop>();
+        var gameLoop = services.GetRequiredService<GameLoop>();
         await gameLoop.Run();
     }
     static IServiceProvider RegisterServices()
