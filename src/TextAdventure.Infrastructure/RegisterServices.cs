@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TextAdventure.Core.Repository;
+using TextAdventure.Application.Persistence;
+using TextAdventure.Core.Interfaces;
 using TextAdventure.Infrastructure.Repository;
+using TextAdventure.Infrastructure.Services;
 
 namespace TextAdventure.Infrastructure
 {
@@ -10,6 +12,9 @@ namespace TextAdventure.Infrastructure
         {
             services.AddScoped<IAdventureRepository, AdventureRepository>();
             services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<ICharacterRepository, CharacterRepository>();
+            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IParserService, ParserService>();
 
             return services;
         }
