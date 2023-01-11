@@ -1,11 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TextAdventure;
+using TextAdventure.Application;
+using TextAdventure.Application.Configuration.AutoMapper;
 using TextAdventure.Core;
 using TextAdventure.Infrastructure;
 
 public class Program
 {
-    public static async Task Main(string[] args)
+    static async Task Main(string[] args)
     {
         var services = RegisterServices();
         var gameLoop= services.GetRequiredService<GameLoop>();
@@ -15,8 +17,10 @@ public class Program
     {
         var services = new ServiceCollection();
         services.AddSingleton<GameLoop>();
-        services.AddCore();
+        services.AddApplication();
         services.AddInfrastructure();
+        services.AddAutoMapper(typeof(ApplicationMappingProfile));
+        AutoMapperConfig.RegisterMappings();
 
         return services.BuildServiceProvider();
     }
