@@ -2,35 +2,42 @@
 {
     public class Adventure
     {
-        public Adventure()
-        {
-            Id = 0;
-            Name = "";
-            Description = "";
-            ActualRoom = new Room(0, "", "", new List<Exit>());
-            Items = new List<Item>();
-            Characters = new List<Character>();
-            Exits = new List<Exit>();
-        }
-
-        public Adventure(int id, string name, string description, Room actualRoom, List<Item> items, List<Character> characters, List<Exit> exits)
+        public Adventure(int id, string name, string description)
         {
             Id = id;
             Name = name;
             Description = description;
-            ActualRoom = actualRoom;
-            Items = items;
-            Characters = characters;
-            Exits = exits;
+            OutputText = "";
+            ActualRoom = new Room(0, "", "");
+            LoadRoom = false;
+            Items = new List<Item>();
+            Characters = new List<Character>();
         }
 
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public int Id { get; }
+        public string Name { get; }
+        public string Description { get; }
+        public string OutputText { get; set; }
         public Room ActualRoom { get; set; }
-        public List<Item> Items { get; set; }
-        public List<Character> Characters { get; set; }
-        public List<Exit> Exits { get; set; }
+        public List<Item> Items { get; }
+        public List<Character> Characters { get; }
+        public bool LoadRoom { get; set; }
+
+        public void AddItem(Item item) => Items.Add(item);
+
+        public void RemoveItem(Item item) => Items.Remove(item);
+
+        public void AddCharacter(Character character)
+        {
+            if (character.IsPrincipal)
+            {
+                if (Characters.Any(x => x.IsPrincipal))
+                {
+                    character.IsPrincipal = false;
+                }
+            }
+            Characters.Add(character);
+        }
 
     }
 }

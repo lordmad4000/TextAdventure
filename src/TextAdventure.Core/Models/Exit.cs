@@ -2,16 +2,16 @@
 {
     public class Exit
     {
-        public Exit(Directions direction, int roomId, string roomName)
+        public Exit(Directions direction, string roomName, int roomId)
         {
             Direction = direction;
-            RoomId = roomId;
             RoomName = roomName;
+            RoomId = roomId;
         }
 
         public Directions Direction { get; set; }
-        public int RoomId { get; set; }
         public string RoomName { get; set; }
+        public int RoomId { get; set; }
 
     }
 }
