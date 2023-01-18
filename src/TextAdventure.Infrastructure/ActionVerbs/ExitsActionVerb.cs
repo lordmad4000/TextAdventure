@@ -10,14 +10,13 @@ namespace TextAdventure.Infrastructure.ActionVerbs
 
         public ITextAdventureAction Check(Phrase phrase)
         {
-            if (!Verbs.Any(x => x.Equals(phrase.Verb)))
+            if (!Verbs.Any(x => x.ToLower().Equals(phrase.Verb.ToLower())))
             {
                 return new CantDoAction();
             }
 
             return new ExitsAction();
         }
-
 
     }
 }
