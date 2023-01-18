@@ -45,73 +45,73 @@ namespace TextAdventure.Infrastructure.Repository
                                   "You are in Northwest region.",
                                   new List<Exit>
                                   {
-                                          new Exit(Directions.East, "East", 2),
-                                          new Exit(Directions.South, "South", 4),
-                                          new Exit(Directions.Southeast, "Southeast", 0),
+                                          new Exit(Directions.East, "North", 2),
+                                          new Exit(Directions.South, "West", 4),
+                                          new Exit(Directions.Southeast, "Start", 0),
                                   }));
             rooms.Add(SetRoom(2, "North",
                                  "You are in North region.",
                                  new List<Exit>
                                  {
-                                         new Exit(Directions.West, "West", 1),
-                                         new Exit(Directions.East, "East", 3),
-                                         new Exit(Directions.Southwest, "Southwest", 4),
-                                         new Exit(Directions.South, "South", 0),
-                                         new Exit(Directions.Southeast, "Southeast", 5),
+                                         new Exit(Directions.West, "Northwest", 1),
+                                         new Exit(Directions.East, "Northeast", 3),
+                                         new Exit(Directions.Southwest, "West", 4),
+                                         new Exit(Directions.South, "Start", 0),
+                                         new Exit(Directions.Southeast, "East", 5),
                                  }));
             rooms.Add(SetRoom(3, "Northeast",
                                  "You are in Northeast region.",
                                  new List<Exit>
                                  {
-                                         new Exit(Directions.West, "West", 2),
-                                         new Exit(Directions.Southwest, "Southwest", 0),
-                                         new Exit(Directions.South, "South", 5),
+                                         new Exit(Directions.West, "North", 2),
+                                         new Exit(Directions.Southwest, "Start", 0),
+                                         new Exit(Directions.South, "East", 5),
                                  }));
             rooms.Add(SetRoom(4, "West",
                                  "You are in West region.",
                                  new List<Exit>
                                  {
-                                         new Exit(Directions.North, "North", 1),
-                                         new Exit(Directions.Northeast, "Northeast", 2),
-                                         new Exit(Directions.East, "East", 0),
-                                         new Exit(Directions.South, "South", 6),
-                                         new Exit(Directions.Southeast, "Southeast", 7),
+                                         new Exit(Directions.North, "Northwest", 1),
+                                         new Exit(Directions.Northeast, "North", 2),
+                                         new Exit(Directions.East, "Start", 0),
+                                         new Exit(Directions.South, "Southwest", 6),
+                                         new Exit(Directions.Southeast, "South", 7),
                                  }));
             rooms.Add(SetRoom(5, "East",
                                  "You are in East region.",
                                  new List<Exit>
                                  {
-                                         new Exit(Directions.Northwest, "Northwest", 2),
-                                         new Exit(Directions.North, "North", 3),
-                                         new Exit(Directions.West, "West", 0),
-                                         new Exit(Directions.Southwest, "Southwest", 7),
-                                         new Exit(Directions.South, "South", 8),
+                                         new Exit(Directions.Northwest, "North", 2),
+                                         new Exit(Directions.North, "Northeast", 3),
+                                         new Exit(Directions.West, "Start", 0),
+                                         new Exit(Directions.Southwest, "South", 7),
+                                         new Exit(Directions.South, "Southeast", 8),
                                  }));
             rooms.Add(SetRoom(6, "Southwest",
                                  "You are in Southwest region.",
                                  new List<Exit>
                                  {
-                                         new Exit(Directions.North, "North", 4),
-                                         new Exit(Directions.Northeast, "Northeast", 0),
-                                         new Exit(Directions.East, "East", 7),
+                                         new Exit(Directions.North, "West", 4),
+                                         new Exit(Directions.Northeast, "Start", 0),
+                                         new Exit(Directions.East, "South", 7),
                                  }));
             rooms.Add(SetRoom(7, "South",
                                  "You are in South region.",
                                  new List<Exit>
                                  {
-                                         new Exit(Directions.Northwest, "Northwest", 4),
-                                         new Exit(Directions.North, "North", 0),
-                                         new Exit(Directions.Northeast, "Northeast", 5),
-                                         new Exit(Directions.West, "West", 6),
-                                         new Exit(Directions.East, "East", 8),
+                                         new Exit(Directions.Northwest, "West", 4),
+                                         new Exit(Directions.North, "Start", 0),
+                                         new Exit(Directions.Northeast, "East", 5),
+                                         new Exit(Directions.West, "Southwest", 6),
+                                         new Exit(Directions.East, "Southeast", 8),
                                  }));
             rooms.Add(SetRoom(8, "Southeast",
                                  "You are in Southeast region.",
                                  new List<Exit>
                                  {
-                                         new Exit(Directions.Northwest, "Northwest", 0),
-                                         new Exit(Directions.North, "North", 5),
-                                         new Exit(Directions.West, "West", 7),
+                                         new Exit(Directions.Northwest, "Start", 0),
+                                         new Exit(Directions.North, "East", 5),
+                                         new Exit(Directions.West, "South", 7),
                                  }));
 
             return rooms;
