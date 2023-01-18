@@ -5,7 +5,7 @@ namespace TextAdventure.Core.Actions
 {
     public class GoAction : ITextAdventureAction
     {
-        private Directions Direction { get; set; }
+        public Directions Direction { get; set; }
 
         public GoAction(Directions direction)
         {
@@ -14,12 +14,11 @@ namespace TextAdventure.Core.Actions
 
         public Adventure Execute(Adventure adventure)
         {
-            Exit? exit = adventure.ActualRoom.Exits.FirstOrDefault(x => x.Direction == Directions.Northwest);
+            Exit? exit = adventure.ActualRoom.Exits.FirstOrDefault(x => x.Direction == Direction);
             if (exit is not null)
             {
-                //adventure = new Adventure();
                 adventure.LoadRoom = true;
-                adventure.ActualRoom.Id = exit.RoomId;
+                adventure.ActualRoom.Name = exit.RoomName;
             }
 
             return adventure;
